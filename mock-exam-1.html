@@ -134,7 +134,7 @@ const KEY = "arabic-g12-s1-mock1-v1";
 const LETTERS = "أبجد";
 const OBJ = {mcq:1,tf:1,match:1};
 const SECS = DATA.sections;
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&","<":"<",">":">",'"':""","'":"&#39;"}[c]));}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>("&#"+c.charCodeAt(0)+";"));}
 function fmt(n){return String(Math.round(n*100)/100);}
 function clock(sec){const neg=sec<0;sec=Math.abs(Math.floor(sec));const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return (neg?"+":"")+h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");}
 function fmtDate(iso){try{return new Date(iso).toLocaleString("ar-QA-u-nu-latn",{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});}catch(e){return iso;}}
